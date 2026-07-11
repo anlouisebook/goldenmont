@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#5f2d3f">
+  <title>Goldenmont Academy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app" class="app-shell">
+    <section id="menu-screen" class="screen menu-screen active" aria-labelledby="game-title">
+      <div class="crest" aria-hidden="true">G</div>
+      <p class="eyebrow">A short school-life visual novel</p>
+      <h1 id="game-title">Goldenmont Academy</h1>
+      <p class="subtitle">Two weeks can change an old friendship—and begin a new one.</p>
+      <div class="menu-actions">
+        <button id="new-game-btn" class="primary">New Game</button>
+        <button id="continue-btn">Continue</button>
+      </div>
+      <p class="small-note">Progress is saved only in this browser.</p>
+    </section>
+
+    <section id="creator-screen" class="screen creator-screen" aria-labelledby="creator-title">
+      <div class="panel creator-panel">
+        <p class="eyebrow">Student Registration</p>
+        <h2 id="creator-title">Create the protagonist</h2>
+        <div class="creator-layout">
+          <canvas id="creator-portrait" width="128" height="128" aria-label="Pixel portrait preview"></canvas>
+          <form id="creator-form">
+            <label>
+              First name
+              <input id="player-name" type="text" maxlength="16" value="Lilianna" required>
+            </label>
+            <label>
+              Hair color
+              <select id="hair-color">
+                <option value="brown">Chestnut brown</option>
+                <option value="black">Soft black</option>
+                <option value="blonde">Golden blonde</option>
+              </select>
+            </label>
+            <label>
+              Eye color
+              <select id="eye-color">
+                <option value="brown">Brown</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+              </select>
+            </label>
+            <label>
+              Skin tone
+              <select id="skin-tone">
+                <option value="warm">Warm</option>
+                <option value="fair">Fair</option>
+                <option value="deep">Deep</option>
+              </select>
+            </label>
+            <div class="form-actions">
+              <button type="button" id="creator-back-btn">Back</button>
+              <button type="submit" class="primary">Begin Term</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="game-screen" class="screen game-screen" aria-label="Game">
+      <header class="game-header">
+        <div>
+          <p class="eyebrow">Goldenmont Academy</p>
+          <strong id="day-label">Week 1 · Monday</strong>
+        </div>
+        <nav class="header-actions" aria-label="Game controls">
+          <button id="save-btn">Save</button>
+          <button id="load-btn">Load</button>
+          <button id="menu-btn">Menu</button>
+        </nav>
+      </header>
+
+      <div class="game-layout">
+        <section class="stage-panel panel" aria-label="Visual novel scene">
+          <div class="pixel-stage">
+            <canvas id="background-canvas" width="128" height="128" aria-label="Pixel school background"></canvas>
+            <canvas id="portrait-canvas" width="128" height="128" aria-label="Character pixel portrait"></canvas>
+          </div>
+          <div class="dialogue-box" aria-live="polite">
+            <p id="speaker-name" class="speaker">Narration</p>
+            <p id="dialogue-text">Welcome to Goldenmont Academy.</p>
+            <div id="choice-area" class="choice-area"></div>
+            <button id="next-btn" class="primary next-btn">Continue</button>
+          </div>
+        </section>
+
+        <aside class="sidebar">
+          <section class="panel stats-panel">
+            <h2>Stats</h2>
+            <div id="stats-list"></div>
+          </section>
+          <section class="panel bonds-panel">
+            <h2>Relationship Hints</h2>
+            <p><strong>Ethan:</strong> <span id="ethan-hint">An old friend.</span></p>
+            <p><strong>Julian:</strong> <span id="julian-hint">A familiar face at school.</span></p>
+          </section>
+          <section class="panel log-panel">
+            <h2>Recent Notes</h2>
+            <ul id="history-list"></ul>
+          </section>
+        </aside>
+      </div>
+    </section>
+
+    <section id="ending-screen" class="screen ending-screen" aria-labelledby="ending-title">
+      <div class="panel ending-panel">
+        <canvas id="ending-portrait" width="128" height="128" aria-label="Ending pixel portrait"></canvas>
+        <p class="eyebrow">Prototype Complete</p>
+        <h2 id="ending-title">A New Chapter</h2>
+        <p id="ending-text"></p>
+        <div id="final-stats" class="final-stats"></div>
+        <button id="restart-btn" class="primary">Play Again</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="game.js"></script>
+</body>
+</html>
